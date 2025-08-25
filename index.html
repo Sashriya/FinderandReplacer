@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        line-height: 1.5;
+        padding: 20px;
+        color: white;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        background-color: #333;
+    }
+    @media screen and (max-width: 600px) {
+        body {
+            padding: 20px;
+            background: none;
+            background-color: #333;
+        }
+        .container {
+            padding: 20px;
+        }
+        h1 {
+            font-size: 1.3em;
+        }
+        textarea {
+            height: 150px;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+        input[type="text"] {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 0.9em;
+        }
+        button {
+            font-size: 1em;
+            padding: 10px;
+        }
+    }
+    .container {
+        max-width: 600px;
+        margin: auto;
+        background: rgba(255, 255, 255, 0.121);
+        padding: 20px;
+        margin-top: 100px;        
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+        margin-bottom: 20px;
+        color: #efefef;
+    }
+    textarea {
+        width: 100%;
+        height: 200px;
+        padding: 10px;
+        margin-bottom: 20px;
+        resize: none;
+        background: rgba(255, 255, 255, 0.226);
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        outline: none;
+        color: white;
+    }
+    textarea::placeholder {
+        color: white;
+    }
+    input[type="text"] {
+        width: calc(50% - 10px);
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        outline: none;
+        color: white;
+        background: rgba(255, 255, 255, 0.226);
+    }
+    input[type="text"]::placeholder {
+        color: white;
+    }
+    button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #2890a7;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    button:hover {
+        background-color: #1e6e7a;
+    }
+</style>
+<body>
+    <div class="container">
+        <h1>📰Finder and Replacer</h1>
+        <textarea name="textInput" id="textInput" placeholder="Enter text here..."></textarea>
+        <input type="text" id="search" placeholder="Search...">
+        <input type="text" id="replace" placeholder="Replace with...">
+        <button id="replaceBtn">Replace</button>
+    </div>
+    <script>
+        document.getElementById("replaceBtn").addEventListener("click", function() {
+            const searchText = document.getElementById("search").value;
+            const replaceText = document.getElementById("replace").value;
+            const content = document.getElementById("textInput").value;
+            const newContent = content.replace(new RegExp(searchText, 'g'), replaceText);
+            document.getElementById("textInput").value = newContent;
+            document.getElementById("search").value = "";
+            document.getElementById("replace").value = "";
+            document.getElementById("textInput").focus();
+        });
+
+    </script>
+</body>
+</html>
